@@ -1,0 +1,4 @@
+transaction_id,tenant_id,account_id,customer_email,event_type,amount,currency
+txn-001,bank-demo-01,acct-1001,customer1@example.test,payment,42.50,USD
+txn-002,bank-demo-01,acct-1002,customer2@example.test,deposit,1250.00,USD
+txn-003,credit-union-demo-02,acct-2001,,transfer,325.75,CAD
