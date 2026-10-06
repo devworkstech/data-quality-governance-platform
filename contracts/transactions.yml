@@ -1,0 +1,52 @@
+dataset: transactions
+owner: data-platform
+version: 1
+primary_key: transaction_id
+fields:
+  transaction_id:
+    type: string
+    nullable: false
+    classification: internal
+  tenant_id:
+    type: string
+    nullable: false
+    classification: internal
+  account_id:
+    type: string
+    nullable: false
+    classification: pii
+  customer_email:
+    type: string
+    nullable: true
+    classification: pii
+  event_type:
+    type: string
+    nullable: false
+    classification: internal
+  amount:
+    type: number
+    nullable: false
+    classification: confidential
+  currency:
+    type: string
+    nullable: false
+    classification: internal
+rules:
+  - name: transaction_id_unique
+    type: unique
+    column: transaction_id
+    severity: critical
+  - name: tenant_complete
+    type: not_null
+    column: tenant_id
+    severity: critical
+  - name: amount_positive
+    type: min
+    column: amount
+    value: 0.01
+    severity: critical
+  - name: supported_currency
+    type: accepted_values
+    column: currency
+    values: [USD, CAD, EUR, GBP]
+    severity: warning
