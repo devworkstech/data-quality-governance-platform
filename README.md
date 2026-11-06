@@ -25,17 +25,18 @@ Trusted dataset
 ## Capabilities
 
 - YAML data contracts describing schema, nullability and business rules.
+- Executable field-level schema checks for declared column presence, string/number types and nullability; schema violations are critical quality-gate failures.
 - Python quality engine for completeness, uniqueness, accepted values and numeric bounds.
 - PII classification metadata separated from actual data values.
 - SQL assertions suitable for warehouse/dbt adaptation.
 - Quality score output that can be integrated into Airflow, Glue, Databricks or CI/CD gates.
-- Unit tests for rule behavior and failure reporting.
+- Unit tests for schema enforcement, rule behavior and failure reporting.
 
 ## Layout
 
 ```text
 contracts/transactions.yml       Dataset contract and governance metadata
-src/quality_engine.py            Reusable quality-rule engine
+src/quality_engine.py            Reusable schema and quality-rule engine
 src/run_quality.py               CLI quality gate
 sql/warehouse_assertions.sql     Warehouse validation examples
 tests/test_quality_engine.py      Unit tests
