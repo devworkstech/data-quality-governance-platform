@@ -12,4 +12,4 @@ jobs:
           python-version: '3.12'
       - run: pip install -r requirements.txt
       - run: python -m src.run_quality sample_data/transactions.csv contracts/transactions.yml
-      - run: pytest -q
+      - run: python -m pytest -q
